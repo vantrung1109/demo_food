@@ -4,4 +4,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="bg_item_table">#E82E2E</color>
     <color name="divider_color">#D3CDCD</color>
+    <color name="color_number_order_red">#203D40</color>
+    <color name="color_number_table_done">#36666B</color>
 </resources>

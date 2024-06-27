@@ -1,26 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="@dimen/_105sdp"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/_120sdp"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:weightSum="3"
-    android:background="@drawable/bg_item_order"
-    android:paddingTop="@dimen/_5sdp"
-    android:layout_marginStart="@dimen/_5sdp"
     >
+    <LinearLayout
+        android:id="@+id/ "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_7sdp"
+        android:weightSum="3"
+        android:background="@drawable/bg_item_order"
+        android:paddingTop="@dimen/_5sdp"
+        android:orientation="horizontal"
+        android:paddingStart="@dimen/_5sdp"
+        android:paddingEnd="@dimen/_5sdp"
+        >
         <RelativeLayout
             android:id="@+id/layout_drink"
-            android:layout_width="@dimen/_40sdp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="#5EE82E"
             android:padding="@dimen/_1sdp"
             android:layout_weight="1"
             android:layout_marginEnd="@dimen/_2sdp"
-            android:layout_marginStart="@dimen/_5sdp"
+
+
             >
             <ImageView
-                android:layout_width="@dimen/_3sdp"
-                android:layout_height="@dimen/_3sdp"
+                android:layout_width="@dimen/_4sdp"
+                android:layout_height="@dimen/_4sdp"
                 android:src="@drawable/drink"
                 android:scaleType="fitXY"
                 android:layout_centerVertical="true"
@@ -35,14 +43,14 @@
                 android:textColor="@color/white"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
-                android:textSize="@dimen/_3sdp"
+                android:textSize="@dimen/_4sdp"
                 android:layout_marginEnd="@dimen/_1sdp"
                 />
         </RelativeLayout>
 
         <RelativeLayout
             android:id="@+id/layout_food"
-            android:layout_width="@dimen/_40sdp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="#5EE82E"
             android:padding="@dimen/_1sdp"
@@ -50,8 +58,8 @@
             android:layout_marginEnd="@dimen/_2sdp"
             >
             <ImageView
-                android:layout_width="@dimen/_3sdp"
-                android:layout_height="@dimen/_3sdp"
+                android:layout_width="@dimen/_4sdp"
+                android:layout_height="@dimen/_4sdp"
                 android:src="@drawable/food"
                 android:scaleType="fitXY"
                 android:layout_centerVertical="true"
@@ -66,23 +74,23 @@
                 android:textColor="@color/white"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
-                android:textSize="@dimen/_3sdp"
+                android:textSize="@dimen/_4sdp"
                 android:layout_marginEnd="@dimen/_1sdp"
                 />
         </RelativeLayout>
 
         <RelativeLayout
             android:id="@+id/layout_ice"
-            android:layout_width="@dimen/_40sdp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@color/bg_item_table"
             android:padding="@dimen/_1sdp"
             android:layout_weight="1"
-            android:layout_marginEnd="@dimen/_5sdp"
+            android:layout_marginEnd="@dimen/_2sdp"
             >
             <ImageView
-                android:layout_width="@dimen/_3sdp"
-                android:layout_height="@dimen/_3sdp"
+                android:layout_width="@dimen/_4sdp"
+                android:layout_height="@dimen/_4sdp"
                 android:src="@drawable/ice"
                 android:scaleType="fitXY"
                 android:layout_centerVertical="true"
@@ -97,8 +105,10 @@
                 android:textColor="@color/white"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
-                android:textSize="@dimen/_3sdp"
+                android:textSize="@dimen/_4sdp"
                 android:layout_marginEnd="@dimen/_1sdp"
                 />
         </RelativeLayout>
-</LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

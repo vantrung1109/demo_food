@@ -1,20 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="@dimen/_105sdp"
+    android:layout_width="@dimen/_120sdp"
     android:layout_height="wrap_content"
 
     >
     <RelativeLayout
+        android:id="@+id/layout_header_item"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/background_item_table"
-        android:layout_marginStart="@dimen/_5sdp"
-        android:layout_marginTop="@dimen/_5sdp"
+
+        android:layout_marginStart="@dimen/_7sdp"
         >
         <RelativeLayout
             android:id="@+id/layout_header"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="@drawable/background_item_table"
+            >
             <RelativeLayout
                 android:id="@+id/layout_order_infor"
                 android:layout_width="wrap_content"
@@ -26,18 +28,21 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
+
                     >
                     <LinearLayout
                         android:id="@+id/layout_order_number"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
                         <TextView
+                            android:id="@+id/tv_order_number_title"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/_5sdp"
                             android:text="#"
                             android:textSize="@dimen/_10ssp"
                             android:fontFamily="@font/roboto_500"
+                            android:textColor="@color/color_number_order_red"
                             />
                         <TextView
                             android:id="@+id/tv_order_number"
@@ -46,7 +51,7 @@
                             android:text="20"
                             android:textSize="@dimen/_10ssp"
                             android:fontFamily="@font/roboto_500"
-
+                            android:textColor="@color/color_number_table_done"
                             />
                     </LinearLayout>
 
@@ -95,9 +100,10 @@
                 </RelativeLayout>
 
                 <ImageView
+                    android:id="@+id/img_status"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/icon_table_working"
+                    android:src="@drawable/icon_ticket_working"
                     android:layout_alignParentEnd="true"
 
                     android:scaleType="fitXY"

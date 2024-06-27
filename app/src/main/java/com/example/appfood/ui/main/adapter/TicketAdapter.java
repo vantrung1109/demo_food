@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -67,19 +68,41 @@ public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.OrderViewH
                 holder.tvTableNumber.setText(String.valueOf(item.getTableId()));
                 holder.tvNameCustomer.setText(item.getNameCustomer());
                 holder.tvNote.setText(item.getNote());
+                if (item.getStatus()){
+                    holder.imgStatus.setImageResource(R.drawable.icon_ticket_done);
+                    holder.layoutHeader.setBackgroundColor(context.getResources().getColor(R.color.white));
+                    holder.tvOrderNumber.setTextColor(context.getResources().getColor(R.color.color_number_table_done));
+                    holder.tvOrderNumberTitle.setTextColor(context.getResources().getColor(R.color.color_number_table_done));
+                }
+                else{
+                    holder.imgStatus.setImageResource(R.drawable.icon_ticket_working);
+                    holder.layoutHeader.setBackgroundColor(context.getResources().getColor(R.color.bg_item_table));
+                    holder.tvOrderNumber.setTextColor(context.getResources().getColor(R.color.color_number_order_red));
+                    holder.tvOrderNumberTitle.setTextColor(context.getResources().getColor(R.color.color_number_order_red));
+                }
                 break;
             case PartTicket.TYPE_ITEM:
                 holder.tvQuantity.setText(String.valueOf(item.getQuantity()));
                 holder.tvName.setText(item.getName());
                 holder.tvPrice.setText(String.valueOf(item.getPrice()));
+
                 break;
             case PartTicket.TYPE_FOOTER:
                 holder.tvTimeDrink.setText(String.valueOf(item.getTimeDrink()));
                 holder.tvTimeFood.setText(String.valueOf(item.getTimeFood()));
                 holder.tvTimeIce.setText(String.valueOf(item.getTimeIce()));
+                if (item.getIsOrderDrink()){
+
+                }
                 break;
         }
+
+
     }
+
+
+
+
 
     @Override
     public int getItemCount() {
@@ -88,12 +111,14 @@ public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.OrderViewH
 
     public static class OrderViewHolder extends RecyclerView.ViewHolder{
         // Header
-        TextView tvOrderNumber, tvTableNumber, tvNameCustomer;
+        TextView tvOrderNumber, tvTableNumber, tvNameCustomer, tvOrderNumberTitle;
+        ImageView imgStatus;
         TextView tvNote;
-        RecyclerView rcvOrderDetail;
+        RelativeLayout layoutHeader;
 
         // Item
         TextView tvQuantity, tvName, tvPrice;
+
 
         // Footer
         RelativeLayout layoutDrink, layoutFood, layoutIce;
@@ -106,6 +131,9 @@ public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.OrderViewH
             tvTableNumber = view.findViewById(R.id.tv_table_number);
             tvNameCustomer = view.findViewById(R.id.tv_name_customer);
             tvNote = view.findViewById(R.id.tv_note);
+            imgStatus = view.findViewById(R.id.img_status);
+            layoutHeader = view.findViewById(R.id.layout_header);
+            tvOrderNumberTitle = view.findViewById(R.id.tv_order_number_title);
 
             // Item
             tvQuantity = view.findViewById(R.id.tv_quantity);

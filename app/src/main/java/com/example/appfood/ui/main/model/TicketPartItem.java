@@ -15,6 +15,8 @@ public class TicketPartItem {
     Integer tableId;
     String nameCustomer;
     String note;
+    Boolean status;
+    Boolean isPaid;
 
     // Item
     Integer quantity;
@@ -25,6 +27,13 @@ public class TicketPartItem {
     String timeDrink;
     String timeFood;
     String timeIce;
+    Boolean isOrderDrink;
+    Boolean isOrderFood;
+    Boolean isOrderIce;
+    Boolean isDrinkDone;
+    Boolean isFoodDone;
+    Boolean isIceDone;
+
 
     // Type
     Integer type;
