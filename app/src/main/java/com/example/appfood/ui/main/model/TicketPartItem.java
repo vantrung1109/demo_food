@@ -39,11 +39,13 @@ public class TicketPartItem {
     Integer type;
 
     // Constructor for Header
-    public TicketPartItem(Integer orderId, Integer tableId, String nameCustomer, String note, Integer type) {
+    public TicketPartItem(Integer orderId, Integer tableId, String nameCustomer, String note, Boolean status, Boolean isPaid ,Integer type) {
         this.orderId = orderId;
         this.tableId = tableId;
         this.nameCustomer = nameCustomer;
         this.note = note;
+        this.status = status;
+        this.isPaid = isPaid;
         this.type = type;
     }
 

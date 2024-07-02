@@ -56,7 +56,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
         FlexboxLayoutManager flexboxLayoutManager = new FlexboxLayoutManager(this);
         flexboxLayoutManager.setFlexDirection(FlexDirection.COLUMN);
         flexboxLayoutManager.setJustifyContent(JustifyContent.FLEX_START);
-        flexboxLayoutManager.setAlignItems(AlignItems.FLEX_START);
+
         flexboxLayoutManager.setFlexWrap(FlexWrap.WRAP);
         viewBinding.rcvOrder.setAdapter(mTicketAdapter);
         viewBinding.rcvOrder.setLayoutManager(flexboxLayoutManager);
@@ -65,56 +65,59 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
         List<View> viewsNext = new ArrayList<>();
 
 
-//        viewBinding.rcvOrder.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-//            @Override
-//            public void onGlobalLayout() {
-//                // Loại bỏ listener để tránh gọi lại nhiều lần
-//                viewBinding.rcvOrder.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-//
-//                // Bây giờ bạn có thể lấy chiều cao chính xác của RecyclerView
-//                int recyclerViewHeight = viewBinding.rcvOrder.getHeight();
-//
-//                int max = 0;
-//                // Get max bottom
-//                for (int i = 0; i < viewBinding.rcvOrder.getChildCount(); i++) {
-//                    View view = viewBinding.rcvOrder.getChildAt(i);
-//                    if (view.getBottom() < recyclerViewHeight ){
-//                        max = Math.max(max, view.getBottom());
-//                    }
-//                }
-//
-//                Log.e("TAG", "onGlobalLayout: " + max);
-//                // Get views with bottom = min
-//                for (int i = 0; i < viewBinding.rcvOrder.getChildCount(); i++) {
-//                    View view = viewBinding.rcvOrder.getChildAt(i);
-//                    if (view.getBottom() == max) {
-//                        views.add(view);
-//                        if (i + 1 < viewBinding.rcvOrder.getChildCount())
-//                            viewsNext.add(viewBinding.rcvOrder.getChildAt(i + 1));
-//                    }
-//
-//                }
-//                Log.e("TAG", "onGlobalLayout: " + views.size());
-//                // Gọi phương thức cập nhật lề dưới
+        viewBinding.rcvOrder.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                // Loại bỏ listener để tránh gọi lại nhiều lần
+                viewBinding.rcvOrder.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+
+
+                int recyclerViewHeight = viewBinding.rcvOrder.getHeight();
+
+                int max = 0;
+                int viewHeight = 0;
+                // Get max bottom
+                for (int i = 0; i < viewBinding.rcvOrder.getChildCount(); i++) {
+                    View view = viewBinding.rcvOrder.getChildAt(i);
+                    viewHeight = view.getHeight();
+                    if (view.getBottom() < recyclerViewHeight ){
+                        max = Math.max(max, view.getBottom());
+                    }
+                }
+
+                Log.e("TAG", "onGlobalLayout: " + max);
+                // Get views with bottom = min
+                for (int i = 0; i < viewBinding.rcvOrder.getChildCount(); i++) {
+                    View view = viewBinding.rcvOrder.getChildAt(i);
+                    if (view.getBottom() == max) {
+
+                        views.add(view);
+                        if (i + 1 < viewBinding.rcvOrder.getChildCount())
+                            viewsNext.add(viewBinding.rcvOrder.getChildAt(i + 1));
+                    }
+
+                }
+                Log.e("TAG", "onGlobalLayout: " + views.size());
+                // Gọi phương thức cập nhật lề dưới
 //                for (View view : views) {
-////                    view.setPadding(
-////                            0,
-////                            0,
-////                            0,
-////                            (int) view.getResources().getDimension(com.intuit.sdp.R.dimen._5sdp));
+//                    view.setPadding(
+//                            (int) view.getResources().getDimension(com.intuit.sdp.R.dimen._5sdp),
+//                            (int) view.getResources().getDimension(com.intuit.sdp.R.dimen._5sdp),
+//                            (int) view.getResources().getDimension(com.intuit.sdp.R.dimen._5sdp),
+//                            (int) view.getResources().getDimension(com.intuit.sdp.R.dimen._15sdp));
 //                }
-//                // Gọi phương thức cập nhật lề trên
-//                for (View view : viewsNext) {
-//
-////                    view.setPadding(
-////                            0,
-////                            (int) view.getResources().getDimension(com.intuit.sdp.R.dimen._5sdp),
-////                            0,
-////                            0);
-//                }
-//
-//            }
-//        });
+                // Gọi phương thức cập nhật lề trên
+                for (View view : viewsNext) {
+
+//                    view.setPadding(
+//                            (int) view.getResources().getDimension(com.intuit.sdp.R.dimen._5sdp),
+//                            (int) view.getResources().getDimension(com.intuit.sdp.R.dimen._7sdp),
+//                            (int) view.getResources().getDimension(com.intuit.sdp.R.dimen._5sdp),
+//                            (int) view.getResources().getDimension(com.intuit.sdp.R.dimen._5sdp));
+                }
+
+            }
+        });
 
     }
 
@@ -122,30 +125,32 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
     public List<TicketPartItem> getTicketItems(){
         List<TicketPartItem> listTicketItems = new ArrayList<>();
 
-        listTicketItems.add(new TicketPartItem(20, 10, "Nguyễn Văn Bảnh", "Coca cola", PartTicket.TYPE_HEADER));
+        listTicketItems.add(new TicketPartItem(20, 10, "Nguyễn Văn Bảnh", "Coca cola", false, false, PartTicket.TYPE_HEADER));
         for (int i = 0; i < 10; i++) {
             listTicketItems.add(new TicketPartItem(1, "Cocacola", 10000.0, PartTicket.TYPE_ITEM));
         }
         listTicketItems.add(new TicketPartItem("02:40", "02:40", "02:40", PartTicket.TYPE_FOOTER));
 
-        listTicketItems.add(new TicketPartItem(20, 10, "Nguyễn Văn Bảnh", "Coca cola", PartTicket.TYPE_HEADER));
+        listTicketItems.add(new TicketPartItem(20, 10, "Nguyễn Văn Bảnh", "Coca cola", true, false, PartTicket.TYPE_HEADER));
         for (int i = 0; i < 20; i++) {
             listTicketItems.add(new TicketPartItem(1, "Cocacola", 10000.0, PartTicket.TYPE_ITEM));
         }
         listTicketItems.add(new TicketPartItem("02:40", "02:40", "02:40", PartTicket.TYPE_FOOTER));
 
-        listTicketItems.add(new TicketPartItem(20, 10, "Nguyễn Văn Bảnh", "Coca cola", PartTicket.TYPE_HEADER));
+        listTicketItems.add(new TicketPartItem(20, 10, "Nguyễn Văn Bảnh", "Coca cola", true, false, PartTicket.TYPE_HEADER));
         for (int i = 0; i < 20; i++) {
             listTicketItems.add(new TicketPartItem(1, "Cocacola", 10000.0, PartTicket.TYPE_ITEM));
         }
         listTicketItems.add(new TicketPartItem("02:40", "02:40", "02:40", PartTicket.TYPE_FOOTER));
 
-        listTicketItems.add(new TicketPartItem(20, 10, "Nguyễn Văn Bảnh", "Coca cola", PartTicket.TYPE_HEADER));
+        listTicketItems.add(new TicketPartItem(20, 10, "Nguyễn Văn Bảnh", "Coca cola", true, false, PartTicket.TYPE_HEADER));
         for (int i = 0; i < 20; i++) {
             listTicketItems.add(new TicketPartItem(1, "Cocacola", 10000.0, PartTicket.TYPE_ITEM));
         }
         listTicketItems.add(new TicketPartItem("02:40", "02:40", "02:40", PartTicket.TYPE_FOOTER));
 
+        listTicketItems.add(new TicketPartItem(20, 10, "Nguyễn Văn Bảnh", "Coca cola", true, true, PartTicket.TYPE_HEADER));
+ 
         return listTicketItems;
     }
 

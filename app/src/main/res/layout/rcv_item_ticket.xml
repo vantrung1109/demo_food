@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="@dimen/_120sdp"
+    android:layout_width="@dimen/_113sdp"
     android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/_7sdp"
+    android:background="#F3F3F3"
+    android:paddingStart="@dimen/_5sdp"
+    android:paddingEnd="@dimen/_5sdp"
+    android:paddingBottom="@dimen/_2sdp"
     >
 
     <RelativeLayout
         android:id="@+id/layout_main_item_ticket"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingStart="@dimen/_5sdp"
-        android:paddingEnd="@dimen/_5sdp"
-        android:paddingTop="@dimen/_2sdp"
-        android:layout_marginStart="@dimen/_7sdp"
-        android:background="#F3F3F3"
+
+
         >
 
         <RelativeLayout

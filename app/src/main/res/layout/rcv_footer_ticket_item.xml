@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="@dimen/_120sdp"
+    android:layout_width="@dimen/_113sdp"
     android:layout_height="wrap_content"
+
+    android:layout_marginStart="@dimen/_7sdp"
+    android:paddingBottom="@dimen/_10sdp"
     >
     <LinearLayout
-        android:id="@+id/ "
+        android:id="@+id/layout_footer_item"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/_7sdp"
         android:weightSum="3"
+
         android:background="@drawable/bg_item_order"
         android:paddingTop="@dimen/_5sdp"
         android:orientation="horizontal"
         android:paddingStart="@dimen/_5sdp"
-        android:paddingEnd="@dimen/_5sdp"
+        android:paddingEnd="@dimen/_3sdp"
         >
         <RelativeLayout
             android:id="@+id/layout_drink"
